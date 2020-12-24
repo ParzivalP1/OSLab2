@@ -11,7 +11,7 @@ do
         page_number=$(cat "$proc_folder"/statm | awk '{print $2;}')
         ram_usage=$(("$page_number" * 4))
 
-        if [[ "$ram_usage" -gt "$max_ram_usage" ]]
+        if [[ "$ram_usage" -gt "$MRAM" ]]
         then
             MRAM="$ram_usage"
             procid=$(cat "$proc_folder"/status | awk -F":" '{if ($1 == "Pid") print $2;}' | tr -d "[\t\s]")
